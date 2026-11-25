@@ -1,0 +1,49 @@
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Register - Food Redistribution</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+    <div class="container">
+        <h1>Create Your Account</h1>
+        <p>Join our food redistribution community!</p>
+
+        {% with messages = get_flashed_messages() %}
+            {% for message in messages %}
+                <p class="message">{{ message }}</p>
+            {% endfor %}
+        {% endwith %}
+
+        <form method="POST">
+            <input type="text" name="name"
+                   placeholder="Enter your name" required>
+
+            <input type="email" name="email"
+                   placeholder="Enter your email" required>
+
+            <input type="password" name="password"
+                   placeholder="Create password (8 characters minimum)"
+                   minlength="8" required>
+
+            <label>Select your role:</label>
+
+            <select name="role" required>
+                <option value="">Choose Role</option>
+                <option value="Donor">Food Donor</option>
+                <option value="Volunteer">Volunteer</option>
+            </select>
+
+            <button type="submit">Register</button>
+        </form>
+
+        <p>Already have an account?
+            <a href="{{ url_for('login') }}">Login here</a>
+        </p>
+    </div>
+
+</body>
+</html>

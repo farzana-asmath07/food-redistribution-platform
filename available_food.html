@@ -1,0 +1,56 @@
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Available Food</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+    <div class="container">
+
+        <h1>Available Food Donations</h1>
+        <p>Find surplus food shared by our community.</p>
+
+        {% with messages = get_flashed_messages() %}
+            {% for message in messages %}
+                <p class="message">{{ message }}</p>
+            {% endfor %}
+        {% endwith %}
+
+        {% for food in foods %}
+
+            <div class="food-card">
+
+                <h2>{{ food.food_name }}</h2>
+
+                <p><strong>Quantity:</strong> {{ food.quantity }}</p>
+
+                <p><strong>Location:</strong> {{ food.location }}</p>
+
+                <p><strong>Description:</strong> {{ food.description }}</p>
+
+                <p><strong>Status:</strong> {{ food.status }}</p>
+
+                <form method="POST"
+                      action="{{ url_for('request_food', food_id=food.id) }}">
+
+                    <button type="submit">Request Food</button>
+
+                </form>
+
+            </div>
+
+        {% else %}
+
+            <p>No food donations available yet.</p>
+
+        {% endfor %}
+
+        <p><a href="{{ url_for('dashboard') }}">Back to Dashboard</a></p>
+
+    </div>
+
+</body>
+</html>

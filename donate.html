@@ -1,0 +1,43 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Donate Food</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+    <div class="container">
+        <h1>Donate Surplus Food</h1>
+        <p>Share your extra food with people in need.</p>
+
+        {% with messages = get_flashed_messages() %}
+            {% for message in messages %}
+                <p class="message">{{ message }}</p>
+            {% endfor %}
+        {% endwith %}
+
+        <form method="POST">
+
+            <input type="text" name="food_name"
+                   placeholder="Food Name" required>
+
+            <input type="text" name="quantity"
+                   placeholder="Quantity (e.g. 10 packets)" required>
+
+            <input type="text" name="location"
+                   placeholder="Pickup Location" required>
+
+            <textarea name="description"
+                      placeholder="Food Description"
+                      rows="4"></textarea>
+
+            <button type="submit">Submit Donation</button>
+
+        </form>
+
+        <p><a href="{{ url_for('dashboard') }}">Back to Dashboard</a></p>
+    </div>
+
+</body>
+</html>

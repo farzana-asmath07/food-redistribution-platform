@@ -1,0 +1,33 @@
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Community Food Redistribution Platform</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+    <div class="container">
+        <h1>Community Food Redistribution Platform</h1>
+
+        <h2>Share Food, Spread Happiness!</h2>
+
+        <p>
+            Our platform connects food donors with volunteers
+            to reduce food waste and help people in need.
+        </p>
+
+        <div class="buttons">
+            <a href="{{ url_for('register') }}">
+                <button>Register</button>
+            </a>
+
+            <a href="{{ url_for('login') }}">
+                <button>Login</button>
+            </a>
+        </div>
+    </div>
+
+</body>
+</html>

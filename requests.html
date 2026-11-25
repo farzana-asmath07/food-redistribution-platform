@@ -1,0 +1,51 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Food Requests</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+    <div class="container">
+
+        <h1>Food Donation Requests</h1>
+        <p>View requests from volunteers.</p>
+
+        {% for req in requests %}
+
+            <div class="food-card">
+
+                <h2>{{ req.food.food_name }}</h2>
+
+                <p>
+                    <strong>Volunteer:</strong>
+                    {{ req.volunteer.name }}
+                </p>
+
+                <p>
+                    <strong>Email:</strong>
+                    {{ req.volunteer.email }}
+                </p>
+
+                <p>
+                    <strong>Status:</strong>
+                    {{ req.status }}
+                </p>
+
+            </div>
+
+        {% else %}
+
+            <p>No food requests received yet.</p>
+
+        {% endfor %}
+
+        <p>
+            <a href="{{ url_for('dashboard') }}">Back to Dashboard</a>
+        </p>
+
+    </div>
+
+</body>
+</html>
